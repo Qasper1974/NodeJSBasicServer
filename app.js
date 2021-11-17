@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs')
 
 const server = http.createServer((req,res)=>{
 
@@ -16,6 +17,13 @@ const server = http.createServer((req,res)=>{
         return res.end()    
     }
 
+    if (url === '/message' && method === 'POST') {
+        fs.writeFile('message.txt','bla bla bla')
+
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end();
+    }
     res.write('<html><head>')
     res.write('<title>First Page</title>')
     res.write('</head>')

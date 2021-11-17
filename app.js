@@ -4,6 +4,7 @@ const fs = require('fs')
 const server = http.createServer((req,res)=>{
 
     const url = req.url;
+    const method = req.method;
 
     if (url === '/') {
         res.write('<html><head>')
@@ -18,7 +19,20 @@ const server = http.createServer((req,res)=>{
     }
 
     if (url === '/message' && method === 'POST') {
-        fs.writeFile('message.txt','bla bla bla')
+
+        const body = []
+
+        req.on('data', (chunk) => {
+            body.push(chunk);
+        });
+
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body);
+            console.log(parsedBody)
+        })
+
+
+        fs.writeFileSync('message.txt','bla bla bla')
 
         res.statusCode = 302;
         res.setHeader('Location', '/');

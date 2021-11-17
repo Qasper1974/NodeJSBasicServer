@@ -27,7 +27,7 @@ const server = http.createServer((req,res)=>{
         });
 
         req.on('end', () => {
-            const parsedBody = Buffer.concat(body);
+            const parsedBody = Buffer.concat(body).toString();
             console.log(parsedBody)
         })
 

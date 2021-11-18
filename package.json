@@ -1,0 +1,23 @@
+{
+  "name": "understandingthebasics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qasper1974/NodeJSBasicServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qasper1974/NodeJSBasicServer/issues"
+  },
+  "homepage": "https://github.com/Qasper1974/NodeJSBasicServer#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

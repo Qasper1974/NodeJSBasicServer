@@ -28,15 +28,13 @@ const server = http.createServer((req,res)=>{
 
         req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
-            console.log(parsedBody)
-        })
-
-
-        fs.writeFileSync('message.txt','bla bla bla')
-
-        res.statusCode = 302;
-        res.setHeader('Location', '/');
-        return res.end();
+            const message = parsedBody.split('=')[1];
+            fs.writeFile('message.txt',message, err => {
+                res.statusCode = 302;
+                res.setHeader('Location', '/');
+                return res.end();
+            });
+        });
     }
     res.write('<html><head>')
     res.write('<title>First Page</title>')

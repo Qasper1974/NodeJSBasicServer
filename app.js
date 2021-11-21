@@ -1,15 +1,16 @@
 const express = require('express');
 
+const bodyparser = require('body-parser')
+
 const app = express();
 
-app.use((req, res, next) => {
-    console.log('Hier zijn we gepasseerd.');
-    next();
-} )
+const shoproutes = require('./routes/shop')
+const adminroutes = require('./routes/admin')
 
-app.use((req, res, next) => {
-    console.log('Hier zijn we ook nog een keertje gepasseerd.');
-    res.send('<h2>Hoi hoi hoi!</h2>');
-} )
+app.use(bodyparser.urlencoded({extended: false}));
+
+app.use(adminroutes);
+app.use(shoproutes);
 
 app.listen(3000); 
+

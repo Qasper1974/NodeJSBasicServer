@@ -4,13 +4,17 @@ const bodyparser = require('body-parser')
 
 const app = express();
 
-const shoproutes = require('./routes/shop')
-const adminroutes = require('./routes/admin')
+const shopRoutes = require('./routes/shop')
+const adminRoutes = require('./routes/admin')
 
 app.use(bodyparser.urlencoded({extended: false}));
 
-app.use(adminroutes);
-app.use(shoproutes);
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
+
+app.use('/', (req, res, next)=>{
+    res.status(404).send('<h1>Page not found.</h1>')
+})
 
 app.listen(3000); 
 

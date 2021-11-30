@@ -23,8 +23,8 @@
     <main>
         <h1>My Products</h1>
         <p>List of all the products...</p>
-            <% if (prods.length > 0) { %>
-                <% for (let product in prods) { %>
+            <% if (prods.length > 0) {  %>
+                <% for (let product of prods) { %>
                     <div class="grid">
                         <article class="card product-item">
                             <header class="card__header">

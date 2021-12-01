@@ -3,7 +3,6 @@ const path = require('path');
 const express = require('express');
 
 const rootDir = require('../utilities/path');
-const { read } = require('fs');
 
 const router = express.Router();
 
@@ -11,7 +10,13 @@ const products = [];
 
 // /admin/add-product => GET
 router.get('/add-product', (req, res, next) => {
-  res.render('add-product.ejs', { pageTitle : 'Add Product'});
+  res.render('add-product', { 
+      pageTitle : 'Add Product',
+        path: '/admin/add-product',
+        productCSS: true,
+        formsCSS: true,
+        activeAddProduct: true
+    });
 });
 
 // /admin/add-product => POST
